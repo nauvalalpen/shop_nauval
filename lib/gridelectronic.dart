@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'homepage.dart';
+import 'cart_data.dart';
+import 'cart_page.dart';
 
 class GridElectronic extends StatefulWidget {
   const GridElectronic({super.key});
@@ -257,7 +259,24 @@ class DetailElectronic extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      var itemToAdd = Map<String, dynamic>.from(item);
+                      itemToAdd['isSelected'] = true;
+                      myCart.add(itemToAdd);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Success add to Cart!"),
+                          duration: Duration(seconds: 1),
+                          backgroundColor: Colors.green,
+                        ),
+                      );
+
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const CartPage(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Add to Cart",
                       style: TextStyle(
