@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:shop_nauval/onboarding.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'homepage.dart';
 import 'onboarding.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isLogin = prefs.getBool('isLogin') ?? false;
+
+  runApp(MyApp(startPage: isLogin));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool startPage;
+  const MyApp({super.key, required this.startPage});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: startPage ? const HomePage() : const OnBoardingPage(),
     );
   }
 }

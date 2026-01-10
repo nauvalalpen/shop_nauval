@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'gridelectronic.dart';
 import 'cart_page.dart';
+import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   List<dynamic> listProductItem = [];
   Timer? bannerTimer;
   int indexBanner = 0;
+  String userName = "User";
   @override
   void initState() {
     super.initState();
@@ -30,6 +33,7 @@ class _HomePageState extends State<HomePage> {
     });
     bannerOnBoarding();
     getProductItem();
+    getProfile();
   }
 
   void bannerOnBoarding() {
@@ -60,6 +64,27 @@ class _HomePageState extends State<HomePage> {
         print(exc);
       }
     }
+  }
+
+  Future<void> getProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userName = prefs.getString('userName') ?? "User";
+    });
+  }
+
+  Future<void> logout() async {
+    // 1. Hapus Session
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs
+        .clear(); // Menghapus SEMUA data (isLogin, userID, userName, dll)
+
+    // 2. Pindah ke Halaman Login dan Hapus Riwayat Navigasi Back
+    if (!mounted) return;
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => const LoginPage()),
+      (route) => false, // Syarat: Hapus semua halaman di belakangnya
+    );
   }
 
   @override
@@ -104,6 +129,41 @@ class _HomePageState extends State<HomePage> {
             },
             icon: const Icon(
               Icons.shopping_cart,
+              color: Colors.white,
+              size: 22,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              // Tampilkan dialog konfirmasi biar ga kepencet
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text("Logout"),
+                    content: const Text("Are you sure you want to logout?"),
+                    actions: [
+                      TextButton(
+                        child: const Text("Cancel"),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      TextButton(
+                        child: const Text("Logout",
+                            style: TextStyle(color: Colors.red)),
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Tutup dialog
+                          logout(); // Panggil fungsi logout
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+            icon: const Icon(
+              Icons.logout,
               color: Colors.white,
               size: 22,
             ),

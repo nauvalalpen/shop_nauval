@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'homepage.dart';
+import 'login_page.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
@@ -91,7 +92,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) => const HomePage(),
+                              builder: (context) => const LoginPage(),
                             ),
                           );
                         },
@@ -119,7 +120,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     if (indexPage == boardingData.length - 1) {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => const HomePage(),
+                          builder: (context) => const LoginPage(),
                         ),
                       );
                     } else {
