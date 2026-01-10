@@ -7,6 +7,10 @@ import 'dart:convert';
 import 'gridelectronic.dart';
 import 'cart_page.dart';
 import 'login_page.dart';
+import 'gridbajupria.dart';
+import 'gridbajuwanita.dart';
+import 'gridsepatupria.dart';
+import 'gridsepatuwanita.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -243,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) => const GridElectronic(),
+                              builder: (context) => const GridBajuPria(),
                             ),
                           );
                         },
@@ -276,7 +280,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) => const GridElectronic(),
+                              builder: (context) => const GridBajuWanita(),
                             ),
                           );
                         },
@@ -309,7 +313,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) => const GridElectronic(),
+                              builder: (context) => const GridSepatuPria(),
                             ),
                           );
                         },
@@ -342,7 +346,7 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) => const GridElectronic(),
+                              builder: (context) => const GridSepatuWanita(),
                             ),
                           );
                         },
