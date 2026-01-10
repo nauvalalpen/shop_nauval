@@ -11,6 +11,5 @@ double calculateTotal() {
 }
 
 void removePurchasedItems() {
-  // Hapus semua item yang isSelected-nya true
   myCart.removeWhere((item) => item['isSelected'] == true);
 }

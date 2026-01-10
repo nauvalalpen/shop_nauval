@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'login_page.dart'; // Nanti kita buat file ini
+import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -11,14 +11,12 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  // Controller untuk mengambil teks dari inputan
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
   Future<void> registerUser() async {
-    // GANTI IP SESUAI SERVER KAMU
     String url = "http://10.0.3.2/servershop_nauval/register.php";
 
     try {
@@ -32,7 +30,6 @@ class _RegisterPageState extends State<RegisterPage> {
       var data = json.decode(response.body);
 
       if (data['success'] == true) {
-        // Jika sukses, muncul notif dan pindah ke Login
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Registration Success! Please Login")),
         );
@@ -41,7 +38,6 @@ class _RegisterPageState extends State<RegisterPage> {
           MaterialPageRoute(builder: (context) => const LoginPage()),
         );
       } else {
-        // Jika gagal (misal email kembar)
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(data['message'])),
         );
@@ -67,8 +63,6 @@ class _RegisterPageState extends State<RegisterPage> {
               const Text("Create Account",
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
               const SizedBox(height: 30),
-
-              // Input Name
               TextField(
                 controller: nameController,
                 decoration: const InputDecoration(
@@ -78,8 +72,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 15),
-
-              // Input Email
               TextField(
                 controller: emailController,
                 decoration: const InputDecoration(
@@ -89,8 +81,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 15),
-
-              // Input Phone
               TextField(
                 controller: phoneController,
                 keyboardType: TextInputType.phone,
@@ -101,11 +91,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 15),
-
-              // Input Password
               TextField(
                 controller: passwordController,
-                obscureText: true, // Biar bintang-bintang
+                obscureText: true,
                 decoration: const InputDecoration(
                   labelText: "Password",
                   border: OutlineInputBorder(),
@@ -113,8 +101,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 30),
-
-              // Tombol Register
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -122,7 +108,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.green),
                   onPressed: () {
-                    // Validasi sederhana
                     if (nameController.text.isEmpty ||
                         emailController.text.isEmpty ||
                         passwordController.text.isEmpty) {
@@ -136,7 +121,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: TextStyle(color: Colors.white, fontSize: 18)),
                 ),
               ),
-
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

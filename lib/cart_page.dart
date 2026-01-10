@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'cart_data.dart'; // File data cart global
+import 'cart_data.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'payment_page.dart'; // File halaman WebView
+import 'payment_page.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -13,27 +13,19 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  // Variabel untuk loading saat tombol ditekan
   bool isCheckingOut = false;
-
-  // Fungsi hapus item
   void removeItem(int index) {
     setState(() {
       myCart.removeAt(index);
     });
   }
 
-  // --- FUNGSI BARU: PROSES CHECKOUT ---
   Future<void> processCheckout() async {
     setState(() {
-      isCheckingOut = true; // Nyalakan loading
+      isCheckingOut = true;
     });
-
-    // 1. Ambil User ID dari Session Login
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userID = prefs.getString('userID');
-
-    // Cek apakah user sudah login
     if (userID == null) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -42,12 +34,7 @@ class _CartPageState extends State<CartPage> {
       setState(() => isCheckingOut = false);
       return;
     }
-
-    // 2. Hitung Total Harga (dikonversi ke Integer)
     int totalAmount = calculateTotal().toInt();
-
-    // 3. Kirim Data ke PHP
-    // Pastikan IP Address benar (10.0.3.2 untuk Genymotion, 10.0.2.2 untuk Emulator Android)
     String url = "http://10.0.3.2/servershop_nauval/checkout.php";
 
     try {
@@ -59,29 +46,19 @@ class _CartPageState extends State<CartPage> {
       var data = json.decode(response.body);
 
       if (data['success'] == true) {
-        // Jika sukses, ambil Link Pembayaran
         String paymentUrl = data['payment_url'];
-
-        // 4. Buka Halaman Webview (PaymentPage)
         if (!mounted) return;
-
-        // Kita pakai 'await' untuk menunggu PaymentPage ditutup
         final result = await Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => PaymentPage(paymentUrl: paymentUrl),
           ),
         );
-
-        // 5. Cek Hasilnya
-        // Jika result == true (dikirim dari _handlePaymentSuccess)
         if (result == true) {
           setState(() {
-            removePurchasedItems(); // Hapus barang yang dibeli
+            removePurchasedItems();
           });
-
-          // Opsional: Redirect ke Home kalau Cart jadi kosong semua
           if (myCart.isEmpty) {
-            Navigator.pop(context); // Kembali ke Home
+            Navigator.pop(context);
           }
         }
       } else {
@@ -99,7 +76,7 @@ class _CartPageState extends State<CartPage> {
     }
 
     setState(() {
-      isCheckingOut = false; // Matikan loading
+      isCheckingOut = false;
     });
   }
 
@@ -209,17 +186,14 @@ class _CartPageState extends State<CartPage> {
                       SizedBox(
                         width: double.infinity,
                         height: 50,
-                        // --- UPDATE NOMOR 3 DI SINI ---
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green),
-                          // Logika tombol: Jika sedang loading, tombol mati (null)
                           onPressed: isCheckingOut
                               ? null
                               : () {
-                                  // Cek apakah ada barang yang dipilih (Total > 0)
                                   if (calculateTotal() > 0) {
-                                    processCheckout(); // PANGGIL FUNGSI CHECKOUT
+                                    processCheckout();
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
@@ -230,7 +204,6 @@ class _CartPageState extends State<CartPage> {
                                     );
                                   }
                                 },
-                          // Tampilan tombol: Jika loading muncul putaran, jika tidak muncul teks Checkout
                           child: isCheckingOut
                               ? const CircularProgressIndicator(
                                   color: Colors.white)

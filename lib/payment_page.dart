@@ -24,31 +24,18 @@ class _PaymentPageState extends State<PaymentPage> {
           onPageStarted: (String url) {},
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
-
-          // --- BAGIAN PENTING: MENCEGAT URL REDIRECT ---
           onNavigationRequest: (NavigationRequest request) {
-            // Cek jika URL yang mau dibuka mengandung 'example.com'
             if (request.url.contains('example.com')) {
-              // Cek status transaksi dari URL parameter
-              // URL biasanya: http://example.com/?order_id=XXX&status_code=200&transaction_status=settlement
-
               if (request.url.contains('transaction_status=settlement') ||
                   request.url.contains('transaction_status=capture')) {
-                // JIKA SUKSES
                 _handlePaymentSuccess();
               } else if (request.url.contains('transaction_status=pending')) {
-                // JIKA PENDING
                 _handlePaymentPending();
               } else {
-                // JIKA GAGAL
                 _handlePaymentFailed();
               }
-
-              // JANGAN buka halaman example.com (Cegah)
               return NavigationDecision.prevent;
             }
-
-            // Kalau bukan example.com (masih halaman midtrans), izinkan
             return NavigationDecision.navigate;
           },
         ),
@@ -57,8 +44,6 @@ class _PaymentPageState extends State<PaymentPage> {
   }
 
   void _handlePaymentSuccess() {
-    // Navigator.pop(context, true) artinya:
-    // Tutup halaman ini DAN kirim nilai 'true' ke halaman sebelumnya
     Navigator.pop(context, true);
 
     ScaffoldMessenger.of(context).showSnackBar(

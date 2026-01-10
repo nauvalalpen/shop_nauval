@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
@@ -74,16 +73,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> logout() async {
-    // 1. Hapus Session
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs
-        .clear(); // Menghapus SEMUA data (isLogin, userID, userName, dll)
-
-    // 2. Pindah ke Halaman Login dan Hapus Riwayat Navigasi Back
+    await prefs.clear();
     if (!mounted) return;
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(builder: (context) => const LoginPage()),
-      (route) => false, // Syarat: Hapus semua halaman di belakangnya
+      (route) => false,
     );
   }
 
@@ -120,7 +115,6 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              // Navigasi ke Halaman Cart
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => const CartPage(),
@@ -135,7 +129,6 @@ class _HomePageState extends State<HomePage> {
           ),
           IconButton(
             onPressed: () {
-              // Tampilkan dialog konfirmasi biar ga kepencet
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -153,8 +146,8 @@ class _HomePageState extends State<HomePage> {
                         child: const Text("Logout",
                             style: TextStyle(color: Colors.red)),
                         onPressed: () {
-                          Navigator.of(context).pop(); // Tutup dialog
-                          logout(); // Panggil fungsi logout
+                          Navigator.of(context).pop();
+                          logout();
                         },
                       ),
                     ],
