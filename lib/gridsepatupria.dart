@@ -50,7 +50,7 @@ class _GridSepatuPriaState extends State<GridSepatuPria> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Baju Pria Products",
+          "Sepatu Pria Products",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
         ),

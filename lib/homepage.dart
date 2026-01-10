@@ -203,24 +203,16 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.all(5),
               child: SizedBox(
-                height:
-                    100, // Sedikit diperbesar biar bayangan card ga kepotong
+                height: 100,
                 width: double.infinity,
-
-                // 1. BUNGKUS ROW DENGAN SingleChildScrollView
                 child: SingleChildScrollView(
-                  scrollDirection:
-                      Axis.horizontal, // Aktifkan scroll ke samping
-
+                  scrollDirection: Axis.horizontal,
                   child: Row(
-                    // Ubah jadi start agar item urut dari kiri
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      // KARTU 1: Electronic
                       Card(
                         elevation: 5,
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 8), // Tambahkan jarak antar kartu
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).pushReplacement(
@@ -252,14 +244,16 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-
-                      // KARTU 2: Baju Pria
                       Card(
                         elevation: 5,
                         margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: InkWell(
                           onTap: () {
-                            // Tambahkan navigasi jika ada
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const GridBajuPria(),
+                              ),
+                            );
                           },
                           child: SizedBox(
                             height: 80,
@@ -284,14 +278,16 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-
-                      // KARTU 3: Dress
                       Card(
                         elevation: 5,
                         margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: InkWell(
                           onTap: () {
-                            // Tambahkan navigasi jika ada
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const GridBajuWanita(),
+                              ),
+                            );
                           },
                           child: SizedBox(
                             height: 80,
@@ -316,14 +312,16 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-
-                      // KARTU 4: Sepatu Pria
                       Card(
                         elevation: 5,
                         margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: InkWell(
                           onTap: () {
-                            // Tambahkan navigasi jika ada
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const GridSepatuPria(),
+                              ),
+                            );
                           },
                           child: SizedBox(
                             height: 80,
@@ -348,14 +346,16 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-
-                      // KARTU 5: Heels
                       Card(
                         elevation: 5,
                         margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: InkWell(
                           onTap: () {
-                            // Tambahkan navigasi jika ada
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const GridSepatuWanita(),
+                              ),
+                            );
                           },
                           child: SizedBox(
                             height: 80,
@@ -380,8 +380,6 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-
-                      // Tambahkan padding kosong di akhir biar ga mentok kanan banget pas di scroll
                       const SizedBox(width: 10),
                     ],
                   ),
