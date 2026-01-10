@@ -17,7 +17,6 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> loginUser() async {
-    // GANTI IP SESUAI SERVER KAMU
     String url = "http://10.0.3.2/servershop_nauval/login.php";
 
     try {
@@ -29,14 +28,12 @@ class _LoginPageState extends State<LoginPage> {
       var data = json.decode(response.body);
 
       if (data['success'] == true) {
-        // 1. Simpan Session Login
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setBool('isLogin', true); // Tandai sudah login
+        await prefs.setBool('isLogin', true);
         await prefs.setString('userID', data['user']['id'].toString());
         await prefs.setString('userName', data['user']['name']);
         await prefs.setString('userEmail', data['user']['email']);
 
-        // 2. Pindah ke Home
         if (!mounted) return;
         Navigator.pushReplacement(
           context,
