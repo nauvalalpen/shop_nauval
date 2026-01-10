@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> getProductItem() async {
     String urlProductItem =
-        "http://10.0.3.2/servershop_nauval/allproductitem.php";
+        "https://shopnauval.alwaysdata.net/servershop_nauval/allproductitem.php";
     try {
       var response = await http.get(Uri.parse(urlProductItem));
       setState(() {
@@ -203,177 +203,188 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.all(5),
               child: SizedBox(
-                height: 90,
+                height:
+                    100, // Sedikit diperbesar biar bayangan card ga kepotong
                 width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Card(
-                      elevation: 5,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const GridElectronic(),
+
+                // 1. BUNGKUS ROW DENGAN SingleChildScrollView
+                child: SingleChildScrollView(
+                  scrollDirection:
+                      Axis.horizontal, // Aktifkan scroll ke samping
+
+                  child: Row(
+                    // Ubah jadi start agar item urut dari kiri
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      // KARTU 1: Electronic
+                      Card(
+                        elevation: 5,
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 8), // Tambahkan jarak antar kartu
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const GridElectronic(),
+                              ),
+                            );
+                          },
+                          child: SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image.asset(
+                                  'lib/images/icon_elektronik.png',
+                                  height: 45,
+                                  width: 45,
+                                ),
+                                const Text(
+                                  'Electronic',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 9),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                        child: SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset(
-                                'lib/images/icon_elektronik.png',
-                                height: 45,
-                                width: 45,
-                              ),
-                              const Text(
-                                'Electronic',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 9),
-                              ),
-                            ],
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      elevation: 5,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const GridBajuPria(),
+
+                      // KARTU 2: Baju Pria
+                      Card(
+                        elevation: 5,
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        child: InkWell(
+                          onTap: () {
+                            // Tambahkan navigasi jika ada
+                          },
+                          child: SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image.asset(
+                                  'lib/images/icon_bajuPria.png',
+                                  height: 45,
+                                  width: 45,
+                                ),
+                                const Text(
+                                  'Baju pria',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 9),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                        child: SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset(
-                                'lib/images/icon_bajuPria.png',
-                                height: 45,
-                                width: 45,
-                              ),
-                              const Text(
-                                'Baju pria',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 9),
-                              ),
-                            ],
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      elevation: 5,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const GridBajuWanita(),
+
+                      // KARTU 3: Dress
+                      Card(
+                        elevation: 5,
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        child: InkWell(
+                          onTap: () {
+                            // Tambahkan navigasi jika ada
+                          },
+                          child: SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image.asset(
+                                  'lib/images/icon_bajuWanita.png',
+                                  height: 45,
+                                  width: 45,
+                                ),
+                                const Text(
+                                  'Dress',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 9),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                        child: SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset(
-                                'lib/images/icon_bajuWanita.png',
-                                height: 45,
-                                width: 45,
-                              ),
-                              const Text(
-                                'Dress',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 9),
-                              ),
-                            ],
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      elevation: 5,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const GridSepatuPria(),
+
+                      // KARTU 4: Sepatu Pria
+                      Card(
+                        elevation: 5,
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        child: InkWell(
+                          onTap: () {
+                            // Tambahkan navigasi jika ada
+                          },
+                          child: SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image.asset(
+                                  'lib/images/icon_sepatuPria.png',
+                                  height: 45,
+                                  width: 45,
+                                ),
+                                const Text(
+                                  'Sepatu Pria',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 9),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                        child: SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset(
-                                'lib/images/icon_sepatuPria.png',
-                                height: 45,
-                                width: 45,
-                              ),
-                              const Text(
-                                'Sepatu Pria',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 9),
-                              ),
-                            ],
                           ),
                         ),
                       ),
-                    ),
-                    Card(
-                      elevation: 5,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const GridSepatuWanita(),
+
+                      // KARTU 5: Heels
+                      Card(
+                        elevation: 5,
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        child: InkWell(
+                          onTap: () {
+                            // Tambahkan navigasi jika ada
+                          },
+                          child: SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image.asset(
+                                  'lib/images/icon_sepatuWanita.png',
+                                  height: 45,
+                                  width: 45,
+                                ),
+                                const Text(
+                                  'Heels',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 9),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                        child: SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset(
-                                'lib/images/icon_sepatuWanita.png',
-                                height: 45,
-                                width: 45,
-                              ),
-                              const Text(
-                                'Heels',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 9),
-                              ),
-                            ],
                           ),
                         ),
                       ),
-                    ),
-                  ],
+
+                      // Tambahkan padding kosong di akhir biar ga mentok kanan banget pas di scroll
+                      const SizedBox(width: 10),
+                    ],
+                  ),
                 ),
               ),
             ),

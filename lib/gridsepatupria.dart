@@ -20,7 +20,7 @@ class _GridSepatuPriaState extends State<GridSepatuPria> {
 
   Future<void> getElectronic() async {
     String urlElectronic =
-        "http://10.0.3.2/servershop_nauval/gridsepatupria.php";
+        "https://shopnauval.alwaysdata.net/servershop_nauval/gridsepatupria.php";
     try {
       var response = await http.get(Uri.parse(urlElectronic));
       if (response.statusCode == 200) {

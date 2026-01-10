@@ -17,7 +17,8 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> loginUser() async {
-    String url = "http://10.0.3.2/servershop_nauval/login.php";
+    String url =
+        "https://shopnauval.alwaysdata.net/servershop_nauval/login.php";
 
     try {
       var response = await http.post(Uri.parse(url), body: {

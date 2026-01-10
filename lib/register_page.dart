@@ -17,7 +17,8 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController phoneController = TextEditingController();
 
   Future<void> registerUser() async {
-    String url = "http://10.0.3.2/servershop_nauval/register.php";
+    String url =
+        "https://shopnauval.alwaysdata.net/servershop_nauval/register.php";
 
     try {
       var response = await http.post(Uri.parse(url), body: {
