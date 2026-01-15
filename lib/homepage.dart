@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> getProductItem() async {
     String urlProductItem =
         "https://shopnauval.alwaysdata.net/servershop_nauval/allproductitem.php";
+    // "http://10.0.3.2/servershop_nauval/allproductitem.php";
     try {
       var response = await http.get(Uri.parse(urlProductItem));
       setState(() {

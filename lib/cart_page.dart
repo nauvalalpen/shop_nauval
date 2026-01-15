@@ -37,6 +37,7 @@ class _CartPageState extends State<CartPage> {
     int totalAmount = calculateTotal().toInt();
     String url =
         "https://shopnauval.alwaysdata.net/servershop_nauval/checkout.php";
+    // "http://10.0.3.2/servershop_nauval/checkout.php";
 
     try {
       var response = await http.post(Uri.parse(url), body: {

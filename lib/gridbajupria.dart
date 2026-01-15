@@ -21,6 +21,7 @@ class _GridBajuPriaState extends State<GridBajuPria> {
   Future<void> getElectronic() async {
     String urlElectronic =
         "https://shopnauval.alwaysdata.net/servershop_nauval/gridbajupria.php";
+    // "http://10.0.3.2/servershop_nauval/gridbajupria.php";
     try {
       var response = await http.get(Uri.parse(urlElectronic));
       if (response.statusCode == 200) {

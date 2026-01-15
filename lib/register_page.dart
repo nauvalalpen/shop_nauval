@@ -19,6 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Future<void> registerUser() async {
     String url =
         "https://shopnauval.alwaysdata.net/servershop_nauval/register.php";
+    // "http://10.0.3.2/servershop_nauval/register.php";
 
     try {
       var response = await http.post(Uri.parse(url), body: {
