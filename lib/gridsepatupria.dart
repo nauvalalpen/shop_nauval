@@ -88,7 +88,7 @@ class _GridSepatuPriaState extends State<GridSepatuPria> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => DetailElectronic(item: item),
+                        builder: (context) => DetailSepatuPria(item: item),
                       ),
                     );
                   },
@@ -159,8 +159,8 @@ class _GridSepatuPriaState extends State<GridSepatuPria> {
   }
 }
 
-class DetailElectronic extends StatelessWidget {
-  const DetailElectronic({super.key, required this.item});
+class DetailSepatuPria extends StatelessWidget {
+  const DetailSepatuPria({super.key, required this.item});
   final dynamic item;
 
   @override

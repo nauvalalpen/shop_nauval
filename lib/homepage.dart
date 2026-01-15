@@ -205,14 +205,14 @@ class _HomePageState extends State<HomePage> {
               child: SizedBox(
                 height: 100,
                 width: double.infinity,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Card(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: Card(
                         elevation: 5,
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        margin: const EdgeInsets.symmetric(horizontal: 2),
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).pushReplacement(
@@ -223,30 +223,35 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: SizedBox(
                             height: 80,
-                            width: 80,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Image.asset(
                                   'lib/images/icon_elektronik.png',
-                                  height: 45,
-                                  width: 45,
+                                  height: 40,
+                                  width: 40,
                                 ),
+                                const SizedBox(height: 5),
                                 const Text(
                                   'Electronic',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 9),
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      Card(
+                    ),
+                    Expanded(
+                      child: Card(
                         elevation: 5,
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        margin: const EdgeInsets.symmetric(horizontal: 2),
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).pushReplacement(
@@ -257,30 +262,35 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: SizedBox(
                             height: 80,
-                            width: 80,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Image.asset(
                                   'lib/images/icon_bajuPria.png',
-                                  height: 45,
-                                  width: 45,
+                                  height: 40,
+                                  width: 40,
                                 ),
+                                const SizedBox(height: 5),
                                 const Text(
-                                  'Baju pria',
+                                  'Baju Pria',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 9),
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      Card(
+                    ),
+                    Expanded(
+                      child: Card(
                         elevation: 5,
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        margin: const EdgeInsets.symmetric(horizontal: 2),
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).pushReplacement(
@@ -291,30 +301,35 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: SizedBox(
                             height: 80,
-                            width: 80,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Image.asset(
                                   'lib/images/icon_bajuWanita.png',
-                                  height: 45,
-                                  width: 45,
+                                  height: 40,
+                                  width: 40,
                                 ),
+                                const SizedBox(height: 5),
                                 const Text(
                                   'Dress',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 9),
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      Card(
+                    ),
+                    Expanded(
+                      child: Card(
                         elevation: 5,
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        margin: const EdgeInsets.symmetric(horizontal: 2),
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).pushReplacement(
@@ -325,30 +340,35 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: SizedBox(
                             height: 80,
-                            width: 80,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Image.asset(
                                   'lib/images/icon_sepatuPria.png',
-                                  height: 45,
-                                  width: 45,
+                                  height: 40,
+                                  width: 40,
                                 ),
+                                const SizedBox(height: 5),
                                 const Text(
                                   'Sepatu Pria',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 9),
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      Card(
+                    ),
+                    Expanded(
+                      child: Card(
                         elevation: 5,
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        margin: const EdgeInsets.symmetric(horizontal: 2),
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).pushReplacement(
@@ -359,30 +379,32 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: SizedBox(
                             height: 80,
-                            width: 80,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Image.asset(
                                   'lib/images/icon_sepatuWanita.png',
-                                  height: 45,
-                                  width: 45,
+                                  height: 40,
+                                  width: 40,
                                 ),
+                                const SizedBox(height: 5),
                                 const Text(
                                   'Heels',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 9),
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(width: 10),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -424,7 +446,14 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           final productItem = listProductItem[index];
                           return GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailElectronic(item: productItem),
+                                ),
+                              );
+                            },
                             child: Card(
                               elevation: 5,
                               child: Column(

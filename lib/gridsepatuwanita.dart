@@ -88,7 +88,7 @@ class _GridSepatuWanitaState extends State<GridSepatuWanita> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => DetailElectronic(item: item),
+                        builder: (context) => DetailSepatuWanita(item: item),
                       ),
                     );
                   },
@@ -159,8 +159,8 @@ class _GridSepatuWanitaState extends State<GridSepatuWanita> {
   }
 }
 
-class DetailElectronic extends StatelessWidget {
-  const DetailElectronic({super.key, required this.item});
+class DetailSepatuWanita extends StatelessWidget {
+  const DetailSepatuWanita({super.key, required this.item});
   final dynamic item;
 
   @override

@@ -88,7 +88,7 @@ class _GridBajuPriaState extends State<GridBajuPria> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => DetailElectronic(item: item),
+                        builder: (context) => DetailBajuPria(item: item),
                       ),
                     );
                   },
@@ -159,8 +159,8 @@ class _GridBajuPriaState extends State<GridBajuPria> {
   }
 }
 
-class DetailElectronic extends StatelessWidget {
-  const DetailElectronic({super.key, required this.item});
+class DetailBajuPria extends StatelessWidget {
+  const DetailBajuPria({super.key, required this.item});
   final dynamic item;
 
   @override
